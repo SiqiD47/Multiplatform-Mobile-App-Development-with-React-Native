@@ -17,7 +17,8 @@ function RenderItem(props) {
                 image={require('./images/uthappizza.png')}>
                 <Text
                     style={{margin: 10}}>
-                    {item.description}</Text>
+                    {item.description}
+                </Text>
             </Card>
         );
     }
@@ -31,9 +32,9 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        dishes: DISHES,
-        promotions: PROMOTIONS,
-        leaders: LEADERS
+            dishes: DISHES,
+            promotions: PROMOTIONS,
+            leaders: LEADERS
         };
     }
 
