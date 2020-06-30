@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
 import { Text, ScrollView, FlatList } from 'react-native';
 import { Card, ListItem } from 'react-native-elements'; 
-import { LEADERS } from '../shared/leaders';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
 
-function History(props) {
+const mapStateToProps = state => {
+    return {
+      leaders: state.leaders
+    }
+}
+
+function History() {
     return(
         <Card title='Our History'>
             <Text style={{margin: 10, fontSize:14}}>
@@ -16,45 +23,40 @@ function History(props) {
     );
 }
 
-function Leaders({leaders}) {
-    const renderLeader= ({item, index}) => {
-        return (
-            <ListItem
-                key={index}
-                title={item.name}
-                subtitle={item.description}
-                hideChevron={true}
-                leftAvatar={{source: require('./images/alberto.png')}}
-            />
-        )
-    }
-    return(
-        <Card
-            title='Corporate Leadership'>
-            <FlatList 
-                data={leaders}
-                renderItem={renderLeader}
-                keyExtractor={item => item.id.toString()}
-            />
-        </Card>   
-    )
-}
-
 class About extends Component  {
  
     static navigationOptions = {
         title: 'About Us'
     };
     render() {
+        const renderItem = ({item, index}) => {
+            return (
+                <ListItem
+                    key={index}
+                    title={item.name}
+                    subtitle={item.description}
+                    hideChevron={true}
+                    leftAvatar={{source: {uri: baseUrl + item.image}}}
+                 />
+            )
+        }
+
         const {navigate} = this.props.navigation;
+
         return(
             <ScrollView>
                 <History />
-                <Leaders leaders={LEADERS} />
-                {/* <renderLeaders leaders={LEADERS} /> */}
+                <Card
+                    title='Corporate Leadership'>
+                    <FlatList 
+                        data={this.props.leaders.leaders}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id.toString()}
+                    />
+                </Card>  
             </ScrollView>
         );
     } 
 }
 
-export default About;
+export default connect(mapStateToProps)(About);

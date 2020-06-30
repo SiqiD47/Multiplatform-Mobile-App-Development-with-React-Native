@@ -1,3 +1,4 @@
+// reducer
 import * as ActionTypes from './ActionTypes';
 
 export const comments = (state = { errMess: null, comments:[]}, action) => {
