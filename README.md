@@ -1,4 +1,4 @@
-##To run this app:##
+## To run this app:
 
 Change the base URL to your computer's IP address in the baseUrl.js file
 
