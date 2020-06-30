@@ -4,7 +4,7 @@ In the baseUrl.js file, modify the base URL to your computer's IP address
 
 Go to the json-server folder and run:
 
-**json-server --watch db.json -p 3001 -H <IP address here>**
+**json-server --watch db.json -p 3001 -H *YOUR_IP_ADDRESS*
 
 => connect the server to get/post data
 
