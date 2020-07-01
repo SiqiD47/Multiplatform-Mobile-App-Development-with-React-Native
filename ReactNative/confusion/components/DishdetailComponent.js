@@ -57,7 +57,14 @@ function RenderDish(props) {
     const recognizeDrag = ({ moveX, moveY, dx, dy }) => {
         if ( dx < -200 ) // negative dir
             return true;
-        else // positive dir
+        else
+            return false;
+    }
+
+    const recognizeComment = ({ moveX, moveY, dx, dy }) => {
+        if ( dx > 200 ) // positive dir
+            return true;
+        else
             return false;
     }
 
@@ -83,7 +90,10 @@ function RenderDish(props) {
                     ],
                     { cancelable: false }
                 );
-
+            
+            if (recognizeComment(gestureState))
+                props.toggleModal();
+                
             return true;
         }
     })
