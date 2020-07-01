@@ -1,24 +1,28 @@
 ## To run this app:
 
-In the baseUrl.js file, modify the base URL to your computer's IP address 
+1. In the ReactNative/confusion folder, run 
 
-Go to the json-server folder and run:
+**npm install** 
 
-**json-server --watch db.json -p 3001 -H *YOUR_IP_ADDRESS***
+=> to install all the required packages.
 
-=> connect the server to get/post data
+2. In the baseUrl.js file, set the base URL with your computer's IP address 
 
-Then go to the ReactNative/confusion folder and run:
+3. Go to the json-server folder and run: 
+
+**json-server --watch db.json -p 3001 -H *YOUR_IP_ADDRESS*** 
+
+=> to connect to the JSON server and get/post the data.
+
+4. Finally, go to the ReactNative/confusion folder and run 
 
 **expo start**
 
-=> run the app
+=> to run the app.
 
 
 ## To debug this app:
 
 Run **sudo yarn global add react-devtools@3.2.3** to install react-devtools.
 
-In the ReactNative/confusion folder and run:
-
-**react-devtools**
+In the ReactNative/confusion folder and run **react-devtools**.
