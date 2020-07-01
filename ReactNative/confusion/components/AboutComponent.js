@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Text, ScrollView, FlatList } from 'react-native';
 import { Card, ListItem } from 'react-native-elements'; 
 import { connect } from 'react-redux';
+import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
 
@@ -58,17 +59,20 @@ class About extends Component  {
         else if (this.props.leaders.errMess) {
             return(
                 <ScrollView>
+                    <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
                     <History />
                     <Card
                         title='Corporate Leadership'>
                         <Text>{this.props.leaders.errMess}</Text>
                     </Card>
+                    </Animatable.View>
                 </ScrollView>
             );
         }
         else {
             return(
                 <ScrollView>
+                    <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
                     <History />
                     <Card
                         title='Corporate Leadership'>
@@ -78,6 +82,7 @@ class About extends Component  {
                         keyExtractor={item => item.id.toString()}
                         />
                     </Card>
+                    </Animatable.View>
                 </ScrollView>
             );
         }
