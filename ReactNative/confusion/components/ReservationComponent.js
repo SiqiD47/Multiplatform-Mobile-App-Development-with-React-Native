@@ -66,7 +66,8 @@ class Reservation extends Component {
             title: 'Your Reservation',
             body: 'Reservation for '+ date + ' requested',
             ios: {
-                sound: true
+                sound: true,
+                _displayInForeground: true
             },
             android: {
                 sound: true,
