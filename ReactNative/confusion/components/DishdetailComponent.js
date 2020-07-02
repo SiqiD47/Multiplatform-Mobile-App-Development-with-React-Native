@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, FlatList, Modal, StyleSheet, Button, Alert, PanResponder } from 'react-native';
+import { Text, View, ScrollView, FlatList, Modal, StyleSheet, Button, Alert, PanResponder, Share } from 'react-native';
 import { Card, Icon, Rating, AirbnbRating, Input } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
@@ -19,9 +19,9 @@ const mapDispatchToProps = dispatch => ({
     postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment))
 })
 
-
 function RenderComments(props) {
     const comments = props.comments;   
+    
     const renderCommentItem = ({item, index}) => {
         return (
             <View key={index} style={{margin: 10, alignItems: 'left', justifyContent: 'left'}}>
@@ -51,6 +51,16 @@ function RenderComments(props) {
 
 function RenderDish(props) {
     const dish = props.dish;
+
+    const shareDish = (title, message, url) => {
+        Share.share({
+            title: title,
+            message: title + ': ' + message + ' ' + url,
+            url: url
+        },{
+            dialogTitle: 'Share ' + title
+        })
+    }
 
     handleViewRef = (ref) => this.view = ref;
 
@@ -93,7 +103,7 @@ function RenderDish(props) {
             
             if (recognizeComment(gestureState))
                 props.toggleModal();
-                
+
             return true;
         }
     })
@@ -127,6 +137,15 @@ function RenderDish(props) {
                             color='#512DA8'
                             onPress={() => props.toggleModal()}
                             style={styles.icon}
+                        />
+                        <Icon
+                            raised
+                            reverse
+                            name='share'
+                            type='font-awesome'
+                            color='#51D2A8'
+                            style={styles.cardItem}
+                            onPress={() => shareDish(dish.name, dish.description, baseUrl + dish.image)} 
                         />
                     </View>
                 </Card>
