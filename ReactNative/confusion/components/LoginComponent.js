@@ -155,7 +155,7 @@ class RegisterTab extends Component {
     }
 
     processImage = async (imageUri) => {
-        let processedImage = await ImageManipulator.manipulate(
+        let processedImage = await ImageManipulator.manipulateAsync(
             imageUri, 
             [
                 {resize: {width: 400}}
