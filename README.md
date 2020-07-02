@@ -1,4 +1,4 @@
-## To run this app:
+## Run this app:
 
 1. In the ReactNative/confusion folder, run 
 
@@ -21,8 +21,16 @@
 => to run the app.
 
 
-## To debug this app:
+## Debug this app:
 
 Run **sudo yarn global add react-devtools@3.2.3** to install react-devtools.
 
 In the ReactNative/confusion folder and run **react-devtools**.
+
+
+
+## Publish and Distribute this App:
+
+1. Publish: https://docs.expo.io/workflow/publishing/.
+
+2. Distribute to App stores: https://docs.expo.io/distribution/app-stores/.
