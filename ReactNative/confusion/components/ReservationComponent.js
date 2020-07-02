@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Picker, Switch, Button, Modal, ScrollView, Alert } from 'react-native';
+import { Text, View, StyleSheet, Picker, Switch, Modal, ScrollView, Alert } from 'react-native';
+import { Button } from 'react-native-elements'
 import DatePicker from 'react-native-datepicker';
 import * as Animatable from 'react-native-animatable';
 import * as Permissions from 'expo-permissions';
@@ -136,7 +137,7 @@ class Reservation extends Component {
                     <Button
                         onPress={() => this.handleReservation()}
                         title="Reserve"
-                        color="#512DA8"
+                        buttonStyle={{ backgroundColor: "#512DA8" }}
                         accessibilityLabel="Learn more about this purple button"
                         />
                     </View>
