@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Platform, Text, ScrollView, Image, StyleSheet } from 'react-native';
+import Toast from 'react-native-tiny-toast';
+import NetInfo from "@react-native-community/netinfo";
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import Login from './LoginComponent';
@@ -296,8 +298,37 @@ class Main extends Component {
       this.props.fetchComments();
       this.props.fetchPromos();
       this.props.fetchLeaders();
-    }
+
+      NetInfo.fetch().then((connectionInfo) => {
+        Toast.show('Initial Network Connectivity Type: '
+            + connectionInfo.type, {duration: 2000})
+    });
+    
+    window.value=NetInfo.addEventListener((connectionInfo)=>this.handleConnectivityChange(connectionInfo)) ;
+  }
   
+  componentWillUnmount() {
+    window.value();
+  }
+
+  handleConnectivityChange = (connectionInfo) => {
+    switch (connectionInfo.type) {
+        case 'none': 
+            Toast.show('You are now offline!', {duration: 2000});
+            break;
+        case 'wifi':
+            Toast.show('You are now on WiFi', {duration: 2000});
+            break;
+        case 'cellular':
+            Toast.show('You are now on Cellular', {duration: 2000});
+            break;
+        case 'unknown' :
+            Toast.show('You are now have an Unknown connection', {duration: 2000});
+            break;
+        default: 
+    }
+}
+
     render() {
         return (
             <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}>

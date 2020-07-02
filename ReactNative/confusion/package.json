@@ -8,7 +8,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/netinfo": "~3.2.1",
     "expo": "^35.0.0",
+    "expo-calendar": "^8.2.1",
     "expo-image-manipulator": "^8.2.1",
     "expo-image-picker": "^8.3.0",
     "expo-mail-composer": "^8.2.1",
@@ -21,6 +23,7 @@
     "react-native-datepicker": "1.7.2",
     "react-native-elements": "^1.2.7",
     "react-native-swipeout": "2.3.3",
+    "react-native-tiny-toast": "^1.0.7",
     "react-native-web": "^0.11.7",
     "react-navigation": "2.0.1",
     "react-redux": "5.0.7",
